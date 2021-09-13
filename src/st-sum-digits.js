@@ -22,6 +22,7 @@ export default function getSumOfDigits(digit) {
             sum += Number(digit_string[i]);
         }
         digit_string = String(sum);
+        sum = 0;
     }
-    return digit_string;
+    return Number(digit_string);
 }
