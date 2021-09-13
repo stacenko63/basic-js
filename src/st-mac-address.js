@@ -15,7 +15,7 @@ import { NotImplementedError } from '../extensions/index.js';
  *
  */
 export default function isMAC48Address(str) {
-    let index = 2
+    let index = 2;
     for (let i = 0; i < str.length; i++)
     {
         if (i == index && str[i] == "-" && i != 0) 
