@@ -15,17 +15,21 @@ import { NotImplementedError } from '../extensions/index.js';
  */
 export default function transform(arr) {
   throw new NotImplementedError('Not implemented');
-  // if (!Array.isArray(arr)) 
-  //   {
-  //           throw new Error ('\'arr\' parameter must be an instance of the Array!');
-  //   }
-  //   let arr2 = [];
-  //   for (let i = 0; i < arr.length; i++)
-  //   {
-  //       if (i < arr.length - 1 && arr[i] == "--double-next" && typeof(arr[i+1]) == "number") arr2.push(arr[i+1]);  
-  //       else if (i != 0 && arr[i] == "--double-prev") arr2.push(arr[i-1]);
-  //       else if (i <  arr.length - 1 && arr[i] == "--discard-next") i += 2;
-  //       else if ((typeof(arr[i]) == "number" && arr[i+1] != "--discard-prev") || ((typeof(arr[i])) == "number" && i == arr.length - 1)) arr2.push(arr[i]);
-  //   }
-  //   return arr2;
+  if (Object.prototype.toString.call(arr) !== "[object Array]") 
+      {
+              throw new Error ('\'arr\' parameter must be an instance of the Array!');
+      }
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++)
+    {
+        if (typeof(arr[i]) == "number" || typeof(arr[i]) == "string")
+        {
+        if (i < arr.length - 1 && arr[i] == "--double-next" && typeof(arr[i+1]) == "number") arr2.push(arr[i+1]);  
+        else if (i != 0 && arr[i] == "--double-prev" && typeof(arr[i-1]) == "number") arr2.push(arr[i-1]);
+        else if (i <  arr.length - 1 && arr[i] == "--discard-next") i += 2;
+        else if ((typeof(arr[i]) == "number" && arr[i+1] != "--discard-prev") || ((typeof(arr[i])) == "number" && i == arr.length - 1)) arr2.push(arr[i]);
+        }
+        else throw new Error ('\'arr\' parameter must be an instance of the Array!');
+    }
+    return arr2;
 }
