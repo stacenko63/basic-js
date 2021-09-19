@@ -22,9 +22,9 @@ export default function createDreamTeam(members) {
         }
         [members2[i], members2[min]] = [members2[min], members2[i]];
     }
-    for (let i = 0; i < members.length; i++)
+    for (let i = 0; i < members2.length; i++)
     {
-        if (typeof(members2[i]) == "string") answer += members2[i][0];
+        answer += members2[i][0];
     }
     return answer;
 }
