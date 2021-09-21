@@ -16,9 +16,11 @@ export default class DepthCalculator {
   
   calculateDepth(arr) {
     let count = 1;
-    for (let i = 0; i < arr.length; i++)
-    {
-        if (Array.isArray(arr[i]) && this.calculateDepth(arr[i]) > count - 1) count = this.calculateDepth(arr[i]) + 1;
+    for (let i = 0; i < arr.length; i++) {
+      if (Array.isArray(arr[i])) {
+        const depth = this.calculateDepth(arr[i]);
+        count = Math.max(depth + 1, count);
+      }
     }
     return count;
   }
