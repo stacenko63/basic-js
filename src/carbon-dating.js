@@ -18,7 +18,13 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 export default function dateSample(sampleActivity) {
-  //throw new NotImplementedError('Not implemented');
-  if (!isNaN(sampleActivity) || sampleActivity <= 0 || sampleActivity >= 15) return false; 
-  return Math.floor(Math.log(15/sampleActivity)/(0.693/5700));
+  if (typeof(sampleActivity) != "string") return false;
+    for (let i = 0; i < sampleActivity.length; i++)
+  {
+    if (sampleActivity.charCodeAt(i) == 46) i++;  
+    if (sampleActivity.charCodeAt(i) < 48 || sampleActivity.charCodeAt(i) > 57) return false;
+  }
+  let a = Number(sampleActivity);
+  if (a <= 0 || a > 15) return false;
+  return Math.ceil(Math.log(15/a)/(0.693/5730));
 }
