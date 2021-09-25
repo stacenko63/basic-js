@@ -18,7 +18,7 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 export default function dateSample(sampleActivity) {
-  throw new NotImplementedError('Not implemented');
+  //throw new NotImplementedError('Not implemented');
   if (!isNaN(sampleActivity) || sampleActivity <= 0 || sampleActivity >= 15) return false; 
   return Math.floor(Math.log(15/sampleActivity)/(0.693/5700));
 }
